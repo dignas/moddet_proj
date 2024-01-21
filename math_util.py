@@ -24,6 +24,6 @@ def neumann_condition(matrix: npt.NDArray[np.float64]) -> npt.NDArray[np.float64
     matrix[0, :] = matrix[1, :]
     matrix[n - 1, :] = matrix[n - 2, :]
     matrix[:, 0] = matrix[:, 1]
-    matrix[:, n - 1] = matrix[:, n - 2]
+    matrix[:, m - 1] = matrix[:, m - 2]
 
     return matrix
