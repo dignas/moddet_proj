@@ -17,7 +17,7 @@ def laplace_operator(f: list[float], h: float) -> float:
     return dfx2 + dfy2
 
 
-def neumann_condition(matrix: npt.ArrayLike) -> npt.ArrayLike:
+def neumann_condition(matrix: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
 
     n, m = np.shape(matrix)
 

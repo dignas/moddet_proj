@@ -1,12 +1,13 @@
 import numpy.typing as npt
 import numpy as np
+from typing import Tuple
 
 import math_util as mat
 
 
 def fitzhugh_nagumo_model(a: float, b: float, tau: float, k: float):
 
-    def time_step(v: npt.ArrayLike, w: npt.ArrayLike, ht: float, hxy: float) -> (npt.ArrayLike, npt.ArrayLike):
+    def time_step(v: npt.NDArray[np.float64], w: npt.NDArray[np.float64], ht: float, hxy: float) -> Tuple[npt.NDArray[np.float64], npt.NDArray[np.float64]]:
 
         n, m = np.shape(v)
 
