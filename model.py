@@ -22,12 +22,9 @@ def fitzhugh_nagumo_model(a: float, b: float, tau: float, k: float):
                 vn[i, j] = v[i, j] + ht * (a * laplacian_v + v[i, j] - v[i, j]**3 - w[i, j] + k)
                 wn[i, j] = w[i, j] + ht * (b * laplacian_w + v[i, j] - w[i, j]) / tau
 
-                vn = mat.neumann_condition(vn)
-                wn = mat.neumann_condition(wn)
+        vn = mat.neumann_condition(vn)
+        wn = mat.neumann_condition(wn)
 
         return vn, wn
 
     return time_step
-
-
-common_model = fitzhugh_nagumo_model(2.8e-4, 5e-3, 0.1, -5e-3)

@@ -17,13 +17,26 @@ def init_normal(n: int, m: int) -> npt.NDArray[np.float64]:
 	def norm_2d_pdf(x: np.float64, y: np.float64) -> np.float64:
 		return 0.5 / np.pi * np.exp(-0.5 * (x**2 + y**2))
 
-	xs = np.linspace(-3, 3, n)
-	ys = np.linspace(-3, 3, m)
+	xs = np.linspace(-1, 1, n)
+	ys = np.linspace(-1, 1, m)
 
 	result = np.zeros((n, m))
 
 	for i in range(1, n - 1):
 		for j in range(1, m - 1):
 			result[i, j] = norm_2d_pdf(xs[i], ys[j])
+
+	return neumann_condition(result)
+
+
+def init_trigonometric(n: int, m: int) -> npt.NDArray[np.float64]:
+	xs = np.linspace(-5, 5, n)
+	ys = np.linspace(-5, 5, m)
+
+	result = np.zeros((n, m))
+
+	for i in range(1, n - 1):
+		for j in range(1, m - 1):
+			result[i, j] = np.cos(xs[i] * ys[j])
 
 	return neumann_condition(result)
