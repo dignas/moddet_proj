@@ -13,16 +13,17 @@ evolution_plots_no = np.prod(evolution_plots_arange)
 plot_at = np.arange(0, tmax + 1, floor(tmax / (evolution_plots_no - 1)))
 
 
-def sim_and_plot(model, v_init, w_init, ax):
-    _, py = np.shape(ax)
-    px_at, py_at = 0, 0
+def sim_and_plot(model, v_init, w_init, ax=None):
+    if ax is not None:
+        _, py = np.shape(ax)
+        px_at, py_at = 0, 0
 
     v = np.array(v_init, copy=True)
     w = np.array(w_init, copy=True)
     for step in range(tmax + 1):
         v, w = model(v, w, ht, hxy)
 
-        if step in plot_at:
+        if ax is not None and step in plot_at:
             ax[px_at, py_at].imshow(v, cmap="autumn")
             ax[px_at, py_at].set_title(f"t={round(step/100, 1)}yrs")
             py_at += 1
